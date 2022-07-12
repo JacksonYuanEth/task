@@ -38,9 +38,6 @@ contract test{
         address tokenA;
         address tokenB;
         bytes32 opType;
-        //为了防止front-run导致的交易失败，tokenA和tokenB的数量应该为一个范围
-        // amountAdown<=amountA<=amountAup
-        // amountBdown<=amountB<=amountBup
         uint amountA;
         uint amountB;
         //以tokenA计价的执行者奖励
