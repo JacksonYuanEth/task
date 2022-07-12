@@ -143,7 +143,7 @@ contract test{
     
         if(task.opType == SWAP_OPERATION){
             //将tokenA从signer转移给执行者进行multiCall
-            require(true == IUniswapV2ERC20(task.tokenA).transferFrom(task.signer,msg.sender,task.amountA),"error when transferFrom!");
+            require(true == IUniswapV2ERC20(task.tokenA).transferFrom(task.signer,msg.sender,task.amountA.add(task.amountReward)),"error when transferFrom!");
             success = true;
         }
         return success;
@@ -161,7 +161,7 @@ contract test{
             uint amountAnow = IUniswapV2ERC20(task.tokenA).balanceOf(task.signer);
             uint amountBnow = IUniswapV2ERC20(task.tokenB).balanceOf(task.signer);
             require(record.amountA.sub(amountAnow)==task.amountA);
-            require(record.amountB.sub(amountBnow)==task.amountB);
+            require(record.amountB.add(task.amountB)==amountBnow);
             success == true;
         }
         return success;
